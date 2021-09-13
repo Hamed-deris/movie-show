@@ -1,0 +1,111 @@
+.animate-menu {
+  -webkit-animation: show-menu 1s ease 0s 1 normal forwards;
+  animation: show-menu 1s ease 0s 1 normal forwards;
+}
+
+@-webkit-keyframes show-menu {
+  0% {
+    opacity: 0;
+    height: 0px;
+  }
+  100% {
+    opacity: 1;
+    height: 200px;
+  }
+}
+
+@keyframes show-menu {
+  0% {
+    opacity: 0;
+    height: 0px;
+  }
+  100% {
+    opacity: 1;
+    height: 200px;
+  }
+}
+.animate-menu-none {
+  -webkit-animation: menu-none 1s ease 0s 1 normal forwards;
+  animation: menu-none 1s ease 0s 1 normal forwards;
+}
+
+@-webkit-keyframes menu-none {
+  0% {
+    opacity: 1;
+    height: 200px;
+  }
+  85% {
+    opacity: 0;
+  }
+
+  100% {
+    height: 0px;
+  }
+}
+
+@keyframes menu-none {
+  0% {
+    opacity: 1;
+    height: 200px;
+  }
+  85% {
+    opacity: 0;
+  }
+
+  100% {
+    height: 0px;
+  }
+}
+
+.animate-menu-btn-in {
+  -webkit-animation: menu-btn-in 500ms ease 0s 1 normal forwards;
+  animation: menu-btn-in 500ms ease 0s 1 normal forwards;
+}
+@-webkit-keyframes menu-btn-in {
+  0% {
+    opacity: 0;
+    transform: rotate(-360deg) scale(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+@keyframes menu-btn-in {
+  0% {
+    opacity: 0;
+    transform: rotate(-360deg) scale(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+.animate-menu-btn-out {
+  -webkit-animation: menu-btn-out 500ms ease 0s 1 normal forwards;
+  animation: menu-btn-out 500ms ease 0s 1 normal forwards;
+}
+@-webkit-keyframes menu-btn-out {
+  0% {
+    opacity: 0;
+    transform: rotate(360deg) scale(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+@keyframes menu-btn-out {
+  0% {
+    opacity: 0;
+    transform: rotate(360deg) scale(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
