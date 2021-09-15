@@ -3,42 +3,21 @@ import { useEffect, useState } from "react";
 export default function TopSliderChildCartMd({ images }) {
   const [current, setCurrent] = useState(0);
   const length = images.length;
-  const [ACSm, setACSm] = useState({
-    next: "txr-vw",
-    nextNone: "txr-vw-none",
-  });
+  const [ACSm, setACSm] = useState("txr-vw");
   // ====  ====  ====  ====  ====  ====  ====  ====  Handles
   const handleNext = () => {
     if (current >= length - 3) {
-      return (
-        setCurrent(0),
-        setACSm({
-          next: "txr-vw",
-          nextNone: "txr-vw-none",
-        })
-      );
+      return setCurrent(0), setACSm("txl-vw");
     } else {
-      setACSm({
-        next: "txr-vw",
-        nextNone: "txr-vw-none",
-      });
+      setACSm("txl-vw");
       setCurrent((e) => e + 3);
     }
   };
   const handlePre = () => {
     if (current <= 0) {
-      return (
-        setCurrent(length - 3),
-        setACSm({
-          next: "txl-full",
-          nextNone: "txl-full-none",
-        })
-      );
+      return setCurrent(length - 3), setACSm("txr-vw");
     } else {
-      setACSm({
-        next: "txl-full",
-        nextNone: "txl-full-none",
-      });
+      setACSm("txr-vw");
       setCurrent((e) => e - 3);
     }
   };
@@ -56,23 +35,19 @@ export default function TopSliderChildCartMd({ images }) {
   // ====  ====  ====  ====  ====  ====  ====  ====  return
   return (
     <div className="mx-auto">
-      <div className="flex w-full h-[70vh] transition-all overflow-hidden bg-gray-600">
+      <ul className="flex w-full h-[70vh] transition-all overflow-hidden bg-gray-600">
         {images.map((img, i) => (
-          <>
+          <li key={i} className="">
             {i === current && (
               <img
-                className={`w-1/3 h-full ${
-                  i === current ? `${ACSm.next}` : `${ACSm.nextNone}`
-                }`}
+                className={`h-full w-full ${i === current && ACSm}`}
                 src={img}
                 key={i}
               />
             )}
             {i === current + 1 && (
               <img
-                className={`w-1/3 h-full  ${
-                  i === current + 1 ? `${ACSm.next}` : `${ACSm.nextNone}`
-                }
+                className={`h-full w-full  ${i === current + 1 && ACSm}
                 `}
                 src={img}
                 key={i}
@@ -80,16 +55,14 @@ export default function TopSliderChildCartMd({ images }) {
             )}
             {i === current + 2 && (
               <img
-                className={`w-1/3 h-full  ${
-                  i === current + 2 ? `${ACSm.next}` : `${ACSm.nextNone}`
-                }`}
+                className={`h-full w-full  ${i === current + 2 && ACSm}`}
                 src={img}
                 key={i}
               />
             )}
-          </>
+          </li>
         ))}
-      </div>
+      </ul>
 
       <div onClick={() => handlePre()} className="btn">
         Prev
