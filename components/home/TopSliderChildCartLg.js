@@ -1,25 +1,25 @@
 import { useEffect, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-export default function TopSliderChildCartMd({ images }) {
+export default function TopSliderChildCartLg({ images }) {
   const [current, setCurrent] = useState(0);
   const length = images.length;
   const [ACSm, setACSm] = useState("txr-full");
   // ====  ====  ====  ====  ====  ====  ====  ====  Handles
   const handleNext = () => {
-    if (current >= length - 2) {
+    if (current >= length - 3) {
       return setCurrent(0), setACSm("txl-full");
     } else {
       setACSm("txl-full");
-      setCurrent((e) => e + 2);
+      setCurrent((e) => e + 3);
     }
   };
   const handlePre = () => {
     if (current <= 0) {
-      return setCurrent(length - 2), setACSm("txr-full");
+      return setCurrent(length - 3), setACSm("txr-full");
     } else {
       setACSm("txr-full");
-      setCurrent((e) => e - 2);
+      setCurrent((e) => e - 3);
     }
   };
 
@@ -50,6 +50,13 @@ export default function TopSliderChildCartMd({ images }) {
               <img
                 className={`h-full w-full  ${i === current + 1 && ACSm}
                 `}
+                src={img}
+                key={i}
+              />
+            )}
+            {i === current + 2 && (
+              <img
+                className={`h-full w-full  ${i === current + 2 && ACSm}`}
                 src={img}
                 key={i}
               />

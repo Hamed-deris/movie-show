@@ -190,34 +190,4 @@ li {
     transform: translateX(-100%);
   }
 }
-/* ================================================multiple ========== */
-
-.txr-vw {
-  animation: txr-vw 800ms ease 0s 1 normal forwards;
-  display: block;
-}
-
-@keyframes txr-vw {
-  0% {
-    transform: translateX(-100vw);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
-}
-
-.txl-vw {
-  animation: txl-vw 800ms ease 0s 1 normal forwards;
-  display: block;
-}
-
-@keyframes txl-vw {
-  0% {
-    transform: translateX(100vw);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
-}
+/* ================================================  ========== */

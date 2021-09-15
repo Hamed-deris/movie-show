@@ -1,5 +1,7 @@
 import TopSliderChildCart from "./TopSliderChildCart";
+import TopSliderChildCartLg from "./TopSliderChildCartLg";
 import TopSliderChildCartMd from "./TopSliderChildCartMd";
+import TopSliderChildCartXl from "./TopSliderChildCartXl";
 
 export default function TopSlider() {
   const images = [
@@ -14,11 +16,17 @@ export default function TopSlider() {
   ];
   return (
     <div>
-      <div className="sm:hidden">
+      <div className="md:hidden">
         <TopSliderChildCart images={images} />
       </div>
-      <div className="hidden sm:block">
+      <div className="hidden md:block lg:hidden">
         <TopSliderChildCartMd images={images} />
+      </div>
+      <div className="hidden lg:block xl:hidden">
+        <TopSliderChildCartLg images={images} />
+      </div>
+      <div className="hidden xl:block">
+        <TopSliderChildCartXl images={images} />
       </div>
     </div>
   );
