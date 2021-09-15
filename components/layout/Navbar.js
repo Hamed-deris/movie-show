@@ -1,72 +1,77 @@
 import Link from "next/link";
 import { useState } from "react";
-import Search from "../helper/Search";
-import ChangeLightMode from "../helper/ChangeLightMode";
 import { MdClear, MdMenu } from "react-icons/md";
+import ChangeTheme from "../helper/ChangeTheme";
+import Search from "../helper/Search";
 
 export default function Navbar() {
   const [menu, setMenu] = useState(false);
 
   return (
-    <nav className="bg-white shadow dark:bg-gray-800 dark:text-indigo-200 text-indigo-800 ">
-      <div className="container mx-auto px-4 md:px-0 flex justify-between items-center h-14 md:h-24">
-        <div className="flex items-center">
-          <h1 className="text-3xl font-bold cursor-pointer">Movie show</h1>
-        </div>
-        <ul className="hidden md:flex items-center">
-          <li className="cursor-pointer hover:bg-indigo-800 py-1 px-4 rounded hover:text-indigo-200 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 ">
-            <Link href="#">Home</Link>
-          </li>
-          <li className="cursor-pointer hover:bg-indigo-800 py-1 px-4 rounded hover:text-indigo-200 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 ">
-            <Link href="#">About</Link>
-          </li>
-          <li className="cursor-pointer hover:bg-indigo-800 py-1 px-4 rounded hover:text-indigo-200 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 ">
-            <Link href="#">Contact</Link>
-          </li>
-        </ul>
-        <div className="md:hidden flex items-center">
-          <span className="text-2xl">
-            <ChangeLightMode />
-          </span>
-          <button className="text-3xl" onClick={() => setMenu(!menu)}>
-            {!menu && <MdMenu className=" animate-menu-btn-out" />}
-            {menu && <MdClear className=" animate-menu-btn-in" />}
-          </button>
-        </div>
-        <div className="hidden md:flex md:items-center">
-          <span className="text-3xl">
-            <ChangeLightMode />
-          </span>
-          <Search />
+    <div className="bg-base-300 shadow  ">
+      <div className="container mx-auto">
+        <div className="navbar">
+          <span className="text-lg font-bold">Movie Show</span>
+          <div className="flex-1 px-2 mx-2">
+            <div className="items-stretch hidden lg:flex">
+              <Link href="#">
+                <a className="btn btn-ghost btn-sm rounded-btn">Home</a>
+              </Link>
+              <Link href="#">
+                <a className="btn btn-ghost btn-sm rounded-btn">Portfolio</a>
+              </Link>
+              <Link href="#">
+                <a className="btn btn-ghost btn-sm rounded-btn">About</a>
+              </Link>
+              <Link href="#">
+                <a className="btn btn-ghost btn-sm rounded-btn">Contact</a>
+              </Link>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <ChangeTheme />
+            <button
+              className="text-3xl lg:hidden hover:opacity-70"
+              onClick={() => setMenu(!menu)}
+            >
+              {!menu && <MdMenu className=" animate-menu-btn-out " />}
+              {menu && <MdClear className=" animate-menu-btn-in" />}
+            </button>
+          </div>
+          <div className="hidden lg:block">
+            <Search />
+          </div>
         </div>
       </div>
       <div
-        className={`md:hidden flex flex-col justify-evenly overflow-hidden   ${
+        className={`lg:hidden overflow-hidden border-t border-opacity-10 flex flex-col justify-evenly   ${
           menu ? "animate-menu " : "animate-menu-none"
         }`}
       >
-        <ul className="mx-4">
-          <li className="cursor-pointer hover:bg-indigo-800 py-1.5 px-2  rounded-lg hover:text-indigo-200 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 ">
-            <Link href="#">Home</Link>
-          </li>
-          <li className="cursor-pointer hover:bg-indigo-800 py-1.5 px-2  rounded-lg hover:text-indigo-200 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 ">
-            <Link href="#">About</Link>
-          </li>
-          <li className="cursor-pointer hover:bg-indigo-800 py-1.5 px-2  rounded-lg hover:text-indigo-200 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 ">
-            <Link href="#">Contact</Link>
-          </li>
-        </ul>
-        <div className="px-4">
-          <Search />
+        <div className="py-2">
+          <Link href="#">
+            <a className="btn block text-left btn-ghost btn-sm rounded-btn">
+              Home
+            </a>
+          </Link>
+          <Link href="#">
+            <a className="btn block text-left btn-ghost btn-sm rounded-btn">
+              Portfolio
+            </a>
+          </Link>
+          <Link href="#">
+            <a className="btn block text-left btn-ghost btn-sm rounded-btn">
+              About
+            </a>
+          </Link>
+          <Link href="#">
+            <a className="btn block text-left btn-ghost btn-sm rounded-btn">
+              Contact
+            </a>
+          </Link>
         </div>
+        <Search />
       </div>
-    </nav>
+    </div>
   );
 }
-
-/* 
-<div
-          className={`md:hidden overflow-hidden flex flex-col  ${
-            menu ? "animate-menu " : "animate-menu-none"
-          } `}
-        ></div> */

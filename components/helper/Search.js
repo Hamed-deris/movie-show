@@ -1,32 +1,24 @@
 import { useRef } from "react";
-import {
-  MdClear,
-  MdDelete,
-  MdExitToApp,
-  MdExplicit,
-  MdSearch,
-} from "react-icons/md";
+import { MdClear, MdSearch } from "react-icons/md";
 
 export default function Search() {
-  const search = useRef();
+  const searchIn = useRef();
   return (
-    <div className="relative flex items-center border  rounded-lg px-3 dark:border-indigo-900 border-indigo-200">
-      <input
-        ref={search}
-        type="text"
-        name="search"
-        id="search"
-        placeholder="Movie name"
-        className="peer w-full py-3  focus:outline-none focus:border-t  placeholder-indigo-300 !bg-transparent focus:border-indigo-800 "
-      />
-      <MdClear
-        onClick={() => (search.current.value = "")}
-        className="text-indigo-300 text-3xl hover:text-indigo-500 cursor-pointer"
-      />
-      <MdSearch
-        className="
-      text-indigo-300 text-3xl hover:text-indigo-500 cursor-pointer"
-      />
+    <div className="flex border border-opacity-20 rounded-xl mx-2">
+      <div className="form-control flex-grow">
+        <input
+          ref={searchIn}
+          type="text"
+          placeholder="Search"
+          className="input input-ghost"
+        />
+      </div>
+      <button className="btn btn-square btn-ghost text-3xl">
+        <MdClear onClick={() => (searchIn.current.value = "")} />
+      </button>
+      <button className="btn btn-square btn-ghost text-3xl">
+        <MdSearch />
+      </button>
     </div>
   );
 }
