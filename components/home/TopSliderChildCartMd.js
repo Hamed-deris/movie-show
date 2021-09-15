@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 export default function TopSliderChildCartMd({ images }) {
   const [current, setCurrent] = useState(0);
@@ -34,7 +35,7 @@ export default function TopSliderChildCartMd({ images }) {
 
   // ====  ====  ====  ====  ====  ====  ====  ====  return
   return (
-    <div className="mx-auto">
+    <div className="mx-auto relative">
       <ul className="flex w-full h-[70vh] transition-all overflow-hidden bg-gray-600">
         {images.map((img, i) => (
           <li key={i} className="">
@@ -64,12 +65,18 @@ export default function TopSliderChildCartMd({ images }) {
         ))}
       </ul>
 
-      <div onClick={() => handlePre()} className="btn">
-        Prev
-      </div>
-      <div onClick={() => handleNext()} className="btn">
-        next
-      </div>
+      <button
+        className="btn btn-ghost text-4xl text-base-100 -mt-6 absolute top-1/2 "
+        onClick={handlePre}
+      >
+        <IoIosArrowBack />
+      </button>
+      <button
+        className="btn btn-ghost text-4xl text-base-100 -mt-6  absolute top-1/2 right-0"
+        onClick={handleNext}
+      >
+        <IoIosArrowForward />
+      </button>
     </div>
   );
 }
