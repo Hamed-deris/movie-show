@@ -1,24 +1,47 @@
 import { useEffect, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import PosterSlider from "./PosterSlider";
 
-export default function TopSliderChildCartLg({ images }) {
+export default function TopSliderChildCartLg({ movie }) {
   const [current, setCurrent] = useState(0);
-  const length = images.length;
-  const [ACSm, setACSm] = useState("txr-full");
+  const [sliderClassAnimate, setSliderClassAnimate] = useState({
+    next: "txr-full",
+    nextNone: "txr-full-none",
+  });
+  const length = movie.length;
   // ====  ====  ====  ====  ====  ====  ====  ====  Handles
+
   const handleNext = () => {
-    if (current >= length - 3) {
-      return setCurrent(0), setACSm("txl-full");
+    if (current === length - 3) {
+      return (
+        setCurrent(0),
+        setSliderClassAnimate({
+          next: "txr-full",
+          nextNone: "txr-full-none",
+        })
+      );
     } else {
-      setACSm("txl-full");
+      setSliderClassAnimate({
+        next: "txr-full",
+        nextNone: "txr-full-none",
+      });
       setCurrent((e) => e + 3);
     }
   };
   const handlePre = () => {
-    if (current <= 0) {
-      return setCurrent(length - 3), setACSm("txr-full");
+    if (current === 0) {
+      return (
+        setCurrent(length - 3),
+        setSliderClassAnimate({
+          next: "txl-full",
+          nextNone: "txl-full-none",
+        })
+      );
     } else {
-      setACSm("txr-full");
+      setSliderClassAnimate({
+        next: "txl-full",
+        nextNone: "txl-full-none",
+      });
       setCurrent((e) => e - 3);
     }
   };
@@ -35,47 +58,65 @@ export default function TopSliderChildCartLg({ images }) {
 
   // ====  ====  ====  ====  ====  ====  ====  ====  return
   return (
-    <div className="mx-auto relative overflow-hidden">
-      <ul className="flex justify-center w-full h-[60vh] transition-all overflow-hidden bg-gray-600">
-        {images.map((img, i) => (
-          <li key={i} className="overflow-hidden">
-            {i === current && (
-              <img
-                className={`h-full w-full ${i === current && ACSm}`}
-                src={img}
-                key={i}
-              />
-            )}
-            {i === current + 1 && (
-              <img
-                className={`h-full w-full  ${i === current + 1 && ACSm}
-                `}
-                src={img}
-                key={i}
-              />
-            )}
-            {i === current + 2 && (
-              <img
-                className={`h-full w-full  ${i === current + 2 && ACSm}`}
-                src={img}
-                key={i}
-              />
-            )}
-          </li>
-        ))}
-      </ul>
-
+    <div
+      className={`relative grid grid-cols-3 gap-1 h-[60vh] w-full overflow-hidden`}
+    >
+      <div className={`relative overflow-hidden`}>
+        {movie &&
+          movie.map((mov, i) => (
+            <div
+              key={i}
+              className={`absolute w-full left-0 top-0 ${
+                i === current
+                  ? `${sliderClassAnimate.next}`
+                  : `${sliderClassAnimate.nextNone}`
+              }`}
+            >
+              <PosterSlider movie={mov} />
+            </div>
+          ))}
+      </div>
+      <div className={`relative  overflow-hidden`}>
+        {movie &&
+          movie.map((mov, i) => (
+            <div
+              key={i}
+              className={`absolute w-full left-0 top-0 ${
+                i === current + 1
+                  ? `${sliderClassAnimate.next}`
+                  : `${sliderClassAnimate.nextNone}`
+              }`}
+            >
+              <PosterSlider movie={mov} />
+            </div>
+          ))}
+      </div>
+      <div className={`relative  overflow-hidden`}>
+        {movie &&
+          movie.map((mov, i) => (
+            <div
+              key={i}
+              className={`absolute w-full left-0 top-0 ${
+                i === current + 2
+                  ? `${sliderClassAnimate.next}`
+                  : `${sliderClassAnimate.nextNone}`
+              }`}
+            >
+              <PosterSlider movie={mov} />
+            </div>
+          ))}
+      </div>
       <button
-        className="btn btn-ghost text-4xl text-base-100 -mt-6 absolute top-1/2 "
-        onClick={handlePre}
-      >
-        <IoIosArrowBack />
-      </button>
-      <button
-        className="btn btn-ghost text-4xl text-base-100 -mt-6  absolute top-1/2 right-0"
+        className="btn btn-ghost text-4xl z-20 text-base-100 -mt-6  absolute top-1/2 right-0"
         onClick={handleNext}
       >
         <IoIosArrowForward />
+      </button>
+      <button
+        className="btn btn-ghost text-4xl z-20 text-base-100 -mt-6 absolute top-1/2 "
+        onClick={handlePre}
+      >
+        <IoIosArrowBack />
       </button>
     </div>
   );
