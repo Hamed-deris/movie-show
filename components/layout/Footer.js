@@ -6,6 +6,7 @@ export default function Navbar() {
       <div className="flex flex-col md:flex-row md:justify-between items-center container mx-auto gap-3">
         <h1 className="text-xl font-semibold">Movie Show</h1>
         <p>Copyright © 2021 - All right reserved</p>
+        <p>by H.Design</p>
         <div className="flex gap-4">
           <Link href="/">Home</Link>
           <Link href="/about">About</Link>

@@ -57,8 +57,8 @@ button {
 
 /* global */
 .animate-menu {
-  -webkit-animation: show-menu 1s ease 0s 1 normal forwards;
-  animation: show-menu 1s ease 0s 1 normal forwards;
+  -webkit-animation: show-menu 0.3s ease 0s 1 normal forwards;
+  animation: show-menu 0.3s ease 0s 1 normal forwards;
 }
 
 @-webkit-keyframes show-menu {
@@ -83,8 +83,8 @@ button {
   }
 }
 .animate-menu-none {
-  -webkit-animation: menu-none 1s ease 0s 1 normal forwards;
-  animation: menu-none 1s ease 0s 1 normal forwards;
+  -webkit-animation: menu-none 0.3s ease 0s 1 normal forwards;
+  animation: menu-none 0.3s ease 0s 1 normal forwards;
 }
 
 @-webkit-keyframes menu-none {
