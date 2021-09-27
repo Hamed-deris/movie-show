@@ -1,5 +1,6 @@
 import Filter from "../components/home/Filter";
 import TopSlider from "../components/home/TopSlider";
+import FlexMovie from "../components/tamplate/FlexMovie";
 
 export default function Home({ topMoviesData, genresData }) {
   return (
@@ -7,16 +8,16 @@ export default function Home({ topMoviesData, genresData }) {
       {topMoviesData && <TopSlider topMovies={topMoviesData} />}
       {/* <div className="h-[60vh] bg-gray-600"></div> */}
       <Filter />
-      {/* {genresData.map((e) => (
+      {genresData.map((e) => (
         <div key={e.item.id} className="my-4">
           <FlexMovie genresName={e.item.name} genresMovie={e.data.results} />
         </div>
-      ))} */}
+      ))}
     </div>
   );
 }
 
-export async function getStaticProps() {
+/* export async function getStaticProps() {
   const url = "https://api.themoviedb.org/3/";
   const token =
     "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNWJmOGNkY2I3M2YxMmI1NzU4OTg4ODk3M2EwY2ZiNCIsInN1YiI6IjYxMjZhNjNmZDhlMjI1MDA0MjU0ZWY2ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GZR0QfsEGCU_sAe8ETuB-vhtnL7VNb7h8SQYB0314ZU";
@@ -41,8 +42,8 @@ export async function getStaticProps() {
     props: { topMoviesData },
     // revalidate: 36000,
   };
-}
-/* export async function getStaticProps() {
+} */
+export async function getStaticProps() {
   const url = "https://api.themoviedb.org/3/";
   const token =
     "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNWJmOGNkY2I3M2YxMmI1NzU4OTg4ODk3M2EwY2ZiNCIsInN1YiI6IjYxMjZhNjNmZDhlMjI1MDA0MjU0ZWY2ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GZR0QfsEGCU_sAe8ETuB-vhtnL7VNb7h8SQYB0314ZU";
@@ -94,6 +95,6 @@ export async function getStaticProps() {
 
   return {
     props: { topMoviesData, genresData },
-    // revalidate: 36000,
+    revalidate: 36000,
   };
-} */
+}
