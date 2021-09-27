@@ -7,9 +7,9 @@ export default function Navbar() {
         <h1 className="text-xl font-semibold">Movie Show</h1>
         <p>Copyright © 2021 - All right reserved</p>
         <div className="flex gap-4">
-          <Link href="#">Home</Link>
-          <Link href="#">About</Link>
-          <Link href="#">Contact</Link>
+          <Link href="/">Home</Link>
+          <Link href="/about">About</Link>
+          <Link href="/contact">Contact</Link>
         </div>
       </div>
     </footer>

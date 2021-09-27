@@ -2,9 +2,13 @@
 li {
   @apply text-base-content;
 }
+button {
+  @apply btn  btn-xs md:btn-sm lg:btn-md;
+  @apply md:text-lg lg:text-xl xl:text-2xl;
+}
 /* width */
 ::-webkit-scrollbar {
-  @apply w-2;
+  @apply w-2 h-1.5;
 }
 
 /* Track */
@@ -16,12 +20,41 @@ li {
 ::-webkit-scrollbar-thumb {
   @apply bg-base-content rounded;
 }
+/* input-range */
+/* end range */
+
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.line-clamp-4 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
 .line-clamp-8 {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 8;
 }
+
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+
 /* global */
 .animate-menu {
   -webkit-animation: show-menu 1s ease 0s 1 normal forwards;
