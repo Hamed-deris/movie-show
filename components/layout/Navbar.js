@@ -8,7 +8,7 @@ export default function Navbar() {
   const [menu, setMenu] = useState(false);
 
   return (
-    <div className="bg-base-300 shadow  ">
+    <div className="bg-base-300 shadow relative z-50  ">
       <div className="container mx-auto">
         <div className="navbar  border-b border-opacity-10">
           <span className="text-lg font-bold">Movie Show</span>
@@ -41,7 +41,7 @@ export default function Navbar() {
         </div>
       </div>
       <div
-        className={`lg:hidden overflow-hidden flex flex-col justify-evenly   ${
+        className={` fixed bg-base-300 shadow top-14 left-0 w-full z-40 lg:hidden overflow-hidden flex flex-col justify-evenly   ${
           menu ? "animate-menu " : "animate-menu-none"
         }`}
       >

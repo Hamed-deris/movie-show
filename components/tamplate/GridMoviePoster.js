@@ -14,7 +14,7 @@ export default function GridMoviePoster({ movie }) {
   return (
     <div className="group h-full relative overflow-hidden">
       <Image
-        alt={original_title}
+        alt={title}
         className="object-cover"
         layout="fill"
         src={"/t/p/w500/" + poster_path}

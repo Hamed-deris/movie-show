@@ -13,12 +13,12 @@ export default function FlexMoviePoster({ movie }) {
   } = movie;
   return (
     <div className="group h-full relative overflow-hidden">
-      <Image
+      {/* <Image
         alt={original_title}
         className="object-cover object-left-top blur-sm"
         layout="fill"
         src={"/t/p/w500/" + poster_path}
-      />
+      /> */}
       <Image
         alt={original_title}
         className="object-contain"
