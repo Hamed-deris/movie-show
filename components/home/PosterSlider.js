@@ -8,13 +8,13 @@ export default function PosterSlider({ movie }) {
       <Image
         className="object-cover blur-sm "
         layout="fill"
-        src={"/t/p/w500/" + poster_path}
+        src={"/t/p/original/" + poster_path}
       />
       <Image
         alt={title}
         className="object-contain"
         layout="fill"
-        src={"/t/p/w500/" + poster_path}
+        src={"/t/p/original/" + poster_path}
       />
       <div className="absolute top-0 px-4 min-h-16 w-full text-base-content bg-base-300/70  z-10 capitalize flex justify-between items-center">
         <h2 className=" text-xl sm:text-2xl my-2 tracking-wide font-bold ">

@@ -6,7 +6,6 @@ export default function Home({ topMoviesData, genresData }) {
   return (
     <div>
       {topMoviesData && <TopSlider topMovies={topMoviesData} />}
-      {/* <div className="h-[60vh] bg-gray-600"></div> */}
       <Filter />
       {genresData.map((e) => (
         <div key={e.item.id} className="my-4">
