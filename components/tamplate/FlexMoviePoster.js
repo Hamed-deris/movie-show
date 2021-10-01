@@ -1,9 +1,13 @@
+import { isEqual } from "lodash";
+import dynamic from "next/dynamic";
 import Image from "next/image";
-import { IoMdStar } from "react-icons/io";
+import { memo } from "react";
 
-export default function FlexMoviePoster({ movie }) {
+const IoMdStar = dynamic(() =>
+  import("react-icons/io").then((m) => m.IoMdStar)
+);
+function FlexMoviePoster({ movie }) {
   const {
-    id,
     original_title,
     overview,
     release_date,
@@ -13,14 +17,8 @@ export default function FlexMoviePoster({ movie }) {
   } = movie;
   return (
     <div className="group h-full relative overflow-hidden">
-      {/* <Image
-        alt={original_title}
-        className="object-cover object-left-top blur-sm"
-        layout="fill"
-        src={"/t/p/w500/" + poster_path}
-      /> */}
       <Image
-        alt={original_title}
+        alt={title}
         className="object-contain"
         layout="fill"
         src={"/t/p/w500/" + poster_path}
@@ -52,3 +50,5 @@ export default function FlexMoviePoster({ movie }) {
     </div>
   );
 }
+
+export default memo(FlexMoviePoster, isEqual);

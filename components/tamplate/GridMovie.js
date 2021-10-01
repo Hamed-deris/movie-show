@@ -1,7 +1,11 @@
-import GridMoviePoster from "./GridMoviePoster";
-import Pagination from "./Pagination";
+import { isEqual } from "lodash";
+import dynamic from "next/dynamic";
+import { memo } from "react";
+const GridMoviePoster = dynamic(() => import("./GridMoviePoster"));
+const Pagination = dynamic(() => import("./Pagination"));
 
-export default function GridMovie() {
+
+function GridMovie() {
   const Movie = [
     {
       adult: false,
@@ -365,3 +369,4 @@ export default function GridMovie() {
     </div>
   );
 }
+export default memo(GridMovie, isEqual);

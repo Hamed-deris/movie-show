@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-export const useRecursiveTimeout = (callback, delay) => {
+const useRecursiveTimeout = (callback, delay) => {
   const [isRunning, setIsRunning] = useState(false);
   const stop = useCallback(() => setIsRunning(false), [setIsRunning]);
   const play = useCallback(() => setIsRunning(true), [setIsRunning]);
@@ -29,3 +29,4 @@ export const useRecursiveTimeout = (callback, delay) => {
 
   return { play, stop };
 };
+export default useRecursiveTimeout;

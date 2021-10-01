@@ -1,17 +1,33 @@
-import Filter from "../../components/home/Filter";
-import FlexMovie from "../../components/tamplate/FlexMovie";
-import GridMovie from "../../components/tamplate/GridMovie";
+import { isEqual } from "lodash";
+import dynamic from "next/dynamic";
+import { memo } from "react";
 
-export default function index({ filterData }) {
-  // ====     ====     ====     ====     ====     Effects
+const GridMovie = dynamic(() => import("../../components/tamplate/GridMovie"));
+const Filter = dynamic(() => import("../../components/home/Filter"));
+const Head = dynamic(() => import("next/head"));
 
+function index({ filterData }) {
   return (
-    <div>
-      <Filter />
-      <GridMovie />
-    </div>
+    <>
+      <Head>
+        <title>Movie Show Filter</title>
+        <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=7" />$
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="keywords" content="movie movies film tv " />
+        <meta
+          name="description"
+          content="show movies using TMDB Api update every 10 hovers"
+        />
+      </Head>
+      <div>
+        <Filter />
+        <GridMovie />
+      </div>
+    </>
   );
 }
+export default memo(index, isEqual);
 /* export async function getServerSideProps(context) {
   const { page, country, genre, years } = context.query;
 

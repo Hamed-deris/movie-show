@@ -1,6 +1,7 @@
 /* global */
 li {
   @apply text-base-content;
+  /* py-2 px-4 cursor-pointer hover:bg-base-200 rounded-md; */
 }
 button {
   @apply btn  btn-xs md:btn-sm lg:btn-md;
@@ -66,7 +67,7 @@ button {
   }
   100% {
     opacity: 1;
-    height: 220px;
+    height: 200px;
   }
 }
 
@@ -77,7 +78,7 @@ button {
   }
   100% {
     opacity: 1;
-    height: 220px;
+    height: 200px;
   }
 }
 .animate-menu-none {
@@ -88,7 +89,7 @@ button {
 @-webkit-keyframes menu-none {
   0% {
     opacity: 1;
-    height: 220px;
+    height: 200px;
   }
   85% {
     opacity: 0;
@@ -102,7 +103,7 @@ button {
 @keyframes menu-none {
   0% {
     opacity: 1;
-    height: 220px;
+    height: 200px;
   }
   85% {
     opacity: 0;
@@ -114,8 +115,8 @@ button {
 }
 
 .animate-menu-btn-in {
-  -webkit-animation: menu-btn-in 500ms ease 0s 1 normal forwards;
-  animation: menu-btn-in 500ms ease 0s 1 normal forwards;
+  -webkit-animation: menu-btn-in 200ms ease 0s 1 normal forwards;
+  animation: menu-btn-in 200ms ease 0s 1 normal forwards;
 }
 @-webkit-keyframes menu-btn-in {
   0% {
@@ -140,8 +141,8 @@ button {
   }
 }
 .animate-menu-btn-out {
-  -webkit-animation: menu-btn-out 500ms ease 0s 1 normal forwards;
-  animation: menu-btn-out 500ms ease 0s 1 normal forwards;
+  -webkit-animation: menu-btn-out 200ms ease 0s 1 normal forwards;
+  animation: menu-btn-out 200ms ease 0s 1 normal forwards;
 }
 @-webkit-keyframes menu-btn-out {
   0% {

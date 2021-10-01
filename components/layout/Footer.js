@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { memo } from "react";
 
-export default function Navbar() {
+function Footer() {
   return (
     <footer className="bg-base-300 text-base-content mt-auto p-4">
       <div className="flex flex-col md:flex-row md:justify-between items-center container mx-auto gap-3">
@@ -16,3 +17,4 @@ export default function Navbar() {
     </footer>
   );
 }
+export default memo(Footer);

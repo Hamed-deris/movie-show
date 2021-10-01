@@ -1,13 +1,24 @@
 import { useEmblaCarousel } from "embla-carousel/react";
-import { useCallback, useEffect } from "react";
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
-import { useRecursiveTimeout } from "../helper/useRecursiveTimeout";
-import PosterSlider from "./PosterSlider";
+import dynamic from "next/dynamic";
+import { memo, useCallback, useEffect } from "react";
+import useRecursiveTimeout from "../hooks/useRecursiveTimeout";
+const isEqual = dynamic(() => import("lodash").then((m) => m.isEqual));
 
-export default function TopSlider({ topMovies }) {
+const PosterSlider = dynamic(() => import("./PosterSlider"));
+
+const MdKeyboardArrowLeft = dynamic(() =>
+  import("react-icons/md").then((m) => m.MdKeyboardArrowLeft)
+);
+
+const MdKeyboardArrowRight = dynamic(() =>
+  import("react-icons/md").then((m) => m.MdKeyboardArrowRight)
+);
+
+function TopSlider({ topMovies }) {
   const [viewportRef, embla] = useEmblaCarousel({
     loop: true,
     align: "start",
+    speed: 40,
   });
 
   const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
@@ -41,20 +52,17 @@ export default function TopSlider({ topMovies }) {
       </ul>
       <span
         className="absolute z-30 top-1/2 -mt-10 text-5xl cursor-pointer hover:opacity-90"
-        onClick={() => {
-          scrollPrev();
-        }}
+        onClick={() => scrollPrev()}
       >
         <MdKeyboardArrowLeft />
       </span>
       <span
         className="absolute z-30 top-1/2 right-0 -mt-10 text-5xl cursor-pointer hover:opacity-90"
-        onClick={() => {
-          scrollNext();
-        }}
+        onClick={() => scrollNext()}
       >
         <MdKeyboardArrowRight />
       </span>
     </div>
   );
 }
+export default memo(TopSlider, isEqual);

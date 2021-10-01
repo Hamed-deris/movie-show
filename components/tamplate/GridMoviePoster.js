@@ -1,16 +1,13 @@
+import { isEqual } from "lodash";
+import dynamic from "next/dynamic";
 import Image from "next/image";
-import { IoMdStar } from "react-icons/io";
+import { memo } from "react";
+const IoMdStar = dynamic(() =>
+  import("react-icons/io").then((m) => m.IoMdStar)
+);
 
-export default function GridMoviePoster({ movie }) {
-  const {
-    id,
-    original_title,
-    overview,
-    release_date,
-    vote_average,
-    poster_path,
-    title,
-  } = movie;
+function GridMoviePoster({ movie }) {
+  const { overview, release_date, vote_average, poster_path, title } = movie;
   return (
     <div className="group h-full relative overflow-hidden">
       <Image
@@ -41,3 +38,5 @@ export default function GridMoviePoster({ movie }) {
     </div>
   );
 }
+
+export default memo(GridMoviePoster, isEqual);

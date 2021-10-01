@@ -1,32 +1,46 @@
 import { useEmblaCarousel } from "embla-carousel/react";
+import { isEqual } from "lodash";
 import { useRouter } from "next/dist/client/router";
-import { useCallback, useEffect, useState } from "react";
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
-export default function Pagination() {
+import dynamic from "next/dynamic";
+import { memo, useCallback, useEffect, useMemo, useState } from "react";
+
+const MdKeyboardArrowLeft = dynamic(() =>
+  import("react-icons/md").then((m) => m.MdKeyboardArrowLeft)
+);
+const MdKeyboardArrowRight = dynamic(() =>
+  import("react-icons/md").then((m) => m.MdKeyboardArrowRight)
+);
+
+function Pagination() {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState();
   const [emblaRef, emblaApi] = useEmblaCarousel();
+
   // ====     ====     ====     ====     ====     functions
 
-  const pages = (start, stop, step) =>
-    Array.from(
-      { length: (stop - start) / step + 1 },
-      (_, i) => start + i * step
-    );
+  const pages = useMemo(
+    () => (start, stop, step) =>
+      Array.from(
+        { length: (stop - start) / step + 1 },
+        (_, i) => start + i * step
+      ),
+    []
+  );
 
-  const handlePrevPage = () => {
+  // ====     ====     ====     ====     ====     callback
+  const handlePrevPage = useCallback(() => {
     if (currentPage !== 1) {
       setCurrentPage((p) => p - 1);
       handleParam(currentPage - 1);
     }
-  };
+  }, [currentPage]);
 
-  const handleNextPage = () => {
+  const handleNextPage = useCallback(() => {
     if (currentPage !== 50) {
       setCurrentPage((p) => p + 1);
       handleParam(currentPage + 1);
     }
-  };
+  }, [currentPage]);
 
   const handleParam = (p) => {
     router.push({
@@ -35,13 +49,12 @@ export default function Pagination() {
     });
   };
 
-  const handleSlideClick = (index) => {
+  const handleSlideClick = useCallback((index) => {
     emblaApi && emblaApi.clickAllowed() && emblaApi.scrollTo(index - 1);
     setCurrentPage(index);
     handleParam(index);
-  };
+  }, []);
 
-  // ====     ====     ====     ====     ====     callback
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
   }, [emblaApi]);
@@ -57,6 +70,16 @@ export default function Pagination() {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
 
+  const handleNext = () => {
+    handleNextPage();
+    scrollNext();
+  };
+
+  const handlePrev = () => {
+    handlePrevPage();
+    scrollPrev();
+  };
+
   // ====     ====     ====     ====     ====     Effects
   useEffect(() => {
     setCurrentPage(parseInt(router.query.page));
@@ -66,10 +89,8 @@ export default function Pagination() {
   return (
     <div className="mt-10 flex justify-between">
       <button
-        onClick={() => {
-          handlePrevPage();
-          scrollPrev();
-        }}
+        name="prevPage"
+        onClick={handlePrev}
         className={` flex justify-center items-center ${
           currentPage === 1 && "btn-disabled"
         }`}
@@ -80,6 +101,7 @@ export default function Pagination() {
         <div className="embla__container gap-1 ">
           {pages(1, 50, 1).map((page) => (
             <button
+              name={`page-${page}`}
               onClick={() => handleSlideClick(page)}
               key={page}
               className={` ${
@@ -92,10 +114,8 @@ export default function Pagination() {
         </div>
       </div>
       <button
-        onClick={() => {
-          handleNextPage();
-          scrollNext();
-        }}
+        name="nextPage"
+        onClick={handleNext}
         className={`flex justify-center items-center   ${
           currentPage === 50 && "btn-disabled"
         }`}
@@ -105,3 +125,5 @@ export default function Pagination() {
     </div>
   );
 }
+
+export default memo(Pagination, isEqual);

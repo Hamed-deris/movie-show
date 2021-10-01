@@ -1,22 +1,45 @@
-import Filter from "../components/home/Filter";
-import TopSlider from "../components/home/TopSlider";
-import FlexMovie from "../components/tamplate/FlexMovie";
+import { isEqual } from "lodash";
+import dynamic from "next/dynamic";
+import { memo } from "react";
+const Head = dynamic(() => import("next/head"));
 
-export default function Home({ topMoviesData, genresData }) {
+const Filter = dynamic(() => import("../components/home/Filter"));
+const TopSlider = dynamic(() => import("../components/home/TopSlider"));
+const FlexMovie = dynamic(() => import("../components/tamplate/FlexMovie"));
+
+function Home({ topMoviesData, genresData }) {
   return (
-    <div>
-      {topMoviesData && <TopSlider topMovies={topMoviesData} />}
-      <Filter />
-      {genresData.map((e) => (
-        <div key={e.item.id} className="my-4">
-          <FlexMovie genresName={e.item.name} genresMovie={e.data.results} />
-        </div>
-      ))}
-    </div>
+    <>
+      <Head>
+        <title>Movie Show</title>
+        <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=7" />$
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="keywords" content="movie movies film tv " />
+        <meta
+          name="description"
+          content="show movies using TMDB Api update every 10 hovers"
+        />
+      </Head>
+      <div>
+        {topMoviesData && <TopSlider topMovies={topMoviesData} />}
+        <Filter />
+        {genresData &&
+          genresData.map((e) => (
+            <div key={e.item.id} className="my-4">
+              <FlexMovie
+                genresName={e.item.name}
+                genresMovie={e.data.results}
+              />
+            </div>
+          ))}
+      </div>
+    </>
   );
 }
-
-/* export async function getStaticProps() {
+export default memo(Home, isEqual);
+/* 
+export async function getStaticProps() {
   const url = "https://api.themoviedb.org/3/";
   const token =
     "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNWJmOGNkY2I3M2YxMmI1NzU4OTg4ODk3M2EwY2ZiNCIsInN1YiI6IjYxMjZhNjNmZDhlMjI1MDA0MjU0ZWY2ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GZR0QfsEGCU_sAe8ETuB-vhtnL7VNb7h8SQYB0314ZU";
@@ -42,6 +65,7 @@ export default function Home({ topMoviesData, genresData }) {
     // revalidate: 36000,
   };
 } */
+
 export async function getStaticProps() {
   const url = "https://api.themoviedb.org/3/";
   const token =
@@ -67,7 +91,7 @@ export async function getStaticProps() {
   }).then((g) => g.json());
 
   const genresData = await Promise.all(
-    genre.genres.map(async (item) => {
+    genre.genres.slice(0, 5).map(async (item) => {
       const url = `https://api.themoviedb.org/3/discover/movie?with_genres=${item.id}`;
       const res = await fetch(url, {
         headers: {

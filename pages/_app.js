@@ -1,9 +1,11 @@
+import dynamic from "next/dynamic";
 import "tailwindcss/tailwind.css";
-import ScreenSize from "../components/hooks/ScreenSize";
-import Layout from "../components/layout/Layout";
 import "../styles/globals.css";
 
-function MyApp({ Component, pageProps }) {
+const Layout = dynamic(() => import("../components/layout/Layout"));
+const ScreenSize = dynamic(() => import("../components/hooks/ScreenSize"));
+
+export default function MyApp({ Component, pageProps }) {
   return (
     <Layout>
       <Component {...pageProps} />
@@ -11,5 +13,3 @@ function MyApp({ Component, pageProps }) {
     </Layout>
   );
 }
-
-export default MyApp;

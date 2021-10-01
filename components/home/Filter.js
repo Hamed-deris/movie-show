@@ -1,6 +1,9 @@
 import { useRouter } from "next/dist/client/router";
-import { useEffect, useState } from "react";
-import { MdSearch } from "react-icons/md";
+import dynamic from "next/dynamic";
+import { useCallback, useEffect, useState } from "react";
+const MdSearch = dynamic(() =>
+  import("react-icons/md").then((m) => m.MdSearch)
+);
 
 export default function Filter({}) {
   // ===   ===   ===   ===   ===   ===   ===   ===   const
@@ -59,7 +62,7 @@ export default function Filter({}) {
   ];
   // ===   ===   ===   ===   ===   ===   ===   ===   function
 
-  const handleFilter = () => {
+  const handleFilter = useCallback(() => {
     router.push({
       pathname: "/filter",
       query: {
@@ -70,7 +73,16 @@ export default function Filter({}) {
         page: pages,
       },
     });
-  };
+  }, [countryId, genreId, years, rate, pages]);
+
+  const handleCountry = useCallback((c_english_name, c_iso_3166_1) => {
+    setCountry(c_english_name);
+    setCountryId(c_iso_3166_1);
+  }, []);
+  const handleGenre = useCallback((gId, gName) => {
+    setGenreId(gId);
+    setGenre(gName);
+  }, []);
 
   // ====     ====     ====     ====     ====     Effects
   useEffect(() => {
@@ -96,15 +108,12 @@ export default function Filter({}) {
             className="p-2 shadow max-h-44 overflow-y-auto menu dropdown-content bg-base-100 rounded-box"
           >
             {allCounty.map((c) => (
-              <li className="text-sm" key={c.iso_3166_1}>
-                <a
-                  onClick={() => {
-                    setCountry(c.english_name);
-                    setCountryId(c.iso_3166_1);
-                  }}
-                >
-                  {c.english_name}
-                </a>
+              <li
+                className="text-sm"
+                key={c.iso_3166_1}
+                onClick={() => handleCountry(c.english_name, c.iso_3166_1)}
+              >
+                {c.english_name}
               </li>
             ))}
           </ul>
@@ -120,15 +129,12 @@ export default function Filter({}) {
             className="p-2 shadow max-h-44 overflow-y-auto menu dropdown-content bg-base-100 rounded-box"
           >
             {genres.map((g) => (
-              <li key={g.id}>
-                <a
-                  onClick={() => {
-                    setGenreId(g.id);
-                    setGenre(g.name);
-                  }}
-                >
-                  {g.name}
-                </a>
+              <li
+                key={g.id}
+                className="btn btn-ghost"
+                onClick={() => handleGenre(g.id, g.name)}
+              >
+                {g.name}
               </li>
             ))}
           </ul>
@@ -167,6 +173,7 @@ export default function Filter({}) {
         </label>
 
         <button
+          name="filter"
           onClick={handleFilter}
           className="btn tracking-widest flex items-center btn-sm md:btn-md"
         >

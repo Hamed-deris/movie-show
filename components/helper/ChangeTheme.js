@@ -16,22 +16,42 @@ export default function ChangeTheme() {
 
       <ul
         tabIndex="0"
-        className="p-2 shadow menu dropdown-content bg-base-100 rounded-box max-h-96 overflow-y-scroll"
+        className="p-2 shadow menu dropdown-content bg-base-100 rounded-box max-h-96 overflow-y-auto"
       >
-        <li data-set-theme="dark" data-act-class="ACTIVECLASS">
-          <a>dark</a>
+        <li
+          className="btn btn-ghost btn-sm text-left"
+          data-set-theme="dark"
+          data-act-class="ACTIVECLASS"
+        >
+          dark
         </li>
-        <li data-set-theme="light" data-act-class="ACTIVECLASS">
-          <a>light</a>
+        <li
+          className="btn btn-ghost btn-sm text-left"
+          data-set-theme="light"
+          data-act-class="ACTIVECLASS"
+        >
+          light
         </li>
-        <li data-set-theme="synthwave" data-act-class="ACTIVECLASS">
-          <a>synthwave</a>
+        <li
+          className="btn btn-ghost btn-sm text-left"
+          data-set-theme="synthwave"
+          data-act-class="ACTIVECLASS"
+        >
+          synthwave
         </li>
-        <li data-set-theme="retro" data-act-class="ACTIVECLASS">
-          <a>retro</a>
+        <li
+          className="btn btn-ghost btn-sm text-left"
+          data-set-theme="retro"
+          data-act-class="ACTIVECLASS"
+        >
+          retro
         </li>
-        <li data-set-theme="luxury" data-act-class="ACTIVECLASS">
-          <a>luxury</a>
+        <li
+          className="btn btn-ghost btn-sm text-left"
+          data-set-theme="luxury"
+          data-act-class="ACTIVECLASS"
+        >
+          luxury
         </li>
       </ul>
     </div>
