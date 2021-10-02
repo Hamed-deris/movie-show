@@ -22,17 +22,17 @@ function index({ filterData }) {
       </Head>
       <div>
         <Filter />
-        <GridMovie />
+        <GridMovie filterMovieData={filterData} />
       </div>
     </>
   );
 }
 export default memo(index, isEqual);
-/* export async function getServerSideProps(context) {
-  const { page, country, genre, years } = context.query;
+export async function getServerSideProps(context) {
+  const { page, country, genre, years, rating } = context.query;
 
   const res = await fetch(
-    `https://api.themoviedb.org/3/discover/movie?page=${page}&year=${years}&with_genres=${genre}&watch_region=${country}`,
+    `https://api.themoviedb.org/3/discover/movie?page=${page}&year=${years}&with_genres=${genre}&watch_region=${country}&vote_average.gte=${rating}`,
     {
       method: "GET",
       headers: {
@@ -52,4 +52,3 @@ export default memo(index, isEqual);
     props: { filterData },
   };
 }
- */

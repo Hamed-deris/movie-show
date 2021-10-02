@@ -16,8 +16,11 @@ function GridMoviePoster({ movie }) {
         layout="fill"
         src={"/t/p/w500/" + poster_path}
       />
-      <div className="absolute top-0 px-4 min-h-14 w-full text-base-300 bg-base-content/90 text-sm  z-10 capitalize ">
-        <h2 className="my-1 tracking-wide font-semibold truncate ">{title}</h2>
+      <div
+        className="absolute top-0 px-4 min-h-14 w-full text-base-300 bg-base-content text-sm  z-10 capitalize transition-all duration-500 -translate-y-48 
+        group-focus:-translate-y-0 group-hover:-translate-y-0"
+      >
+        <h2 className="my-1 tracking-wide font-bold  ">{title}</h2>
       </div>
       <div
         className="absolute bottom-0 px-2 w-full text-base-content bg-base-300  tracking-wide text-justify leading-5 z-10 capitalize text-xs

@@ -11,7 +11,7 @@ const MdKeyboardArrowRight = dynamic(() =>
   import("react-icons/md").then((m) => m.MdKeyboardArrowRight)
 );
 
-function Pagination() {
+function Pagination({ totalPage }) {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState();
   const [emblaRef, emblaApi] = useEmblaCarousel();
@@ -99,7 +99,7 @@ function Pagination() {
       </button>
       <div className="embla w-4/5 lg:w-10/12 px-4" ref={emblaRef}>
         <div className="embla__container gap-1 ">
-          {pages(1, 50, 1).map((page) => (
+          {pages(1, totalPage, 1).map((page) => (
             <button
               name={`page-${page}`}
               onClick={() => handleSlideClick(page)}

@@ -1,7 +1,7 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    // minimumCacheTTL: 60,
+    minimumCacheTTL: 60,
     loader: "imgix",
     path: "https://image.tmdb.org",
   },

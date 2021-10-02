@@ -109,7 +109,7 @@ export default function Filter({}) {
           >
             {allCounty.map((c) => (
               <li
-                className="text-sm"
+                className="text-sm btn btn-sm btn-ghost text-left"
                 key={c.iso_3166_1}
                 onClick={() => handleCountry(c.english_name, c.iso_3166_1)}
               >
@@ -131,7 +131,7 @@ export default function Filter({}) {
             {genres.map((g) => (
               <li
                 key={g.id}
-                className="btn btn-ghost"
+                className="btn btn-sm btn-ghost text-left"
                 onClick={() => handleGenre(g.id, g.name)}
               >
                 {g.name}

@@ -1,6 +1,6 @@
 import { useEmblaCarousel } from "embla-carousel/react";
 import dynamic from "next/dynamic";
-import { memo, useCallback, useEffect } from "react";
+import { memo, useCallback, useEffect, useMemo } from "react";
 import useRecursiveTimeout from "../hooks/useRecursiveTimeout";
 const isEqual = dynamic(() => import("lodash").then((m) => m.isEqual));
 
@@ -40,28 +40,40 @@ function TopSlider({ topMovies }) {
 
   return (
     <div className="embla relative left-0" ref={viewportRef}>
-      <ul className="w-full flex">
-        {topMovies.results.map((mov) => (
-          <li
-            className="flex-shrink-0 w-full  md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/6  "
-            key={mov.id}
-          >
-            <PosterSlider movie={mov} />
-          </li>
-        ))}
-      </ul>
-      <span
-        className="absolute z-30 top-1/2 -mt-10 text-5xl cursor-pointer hover:opacity-90"
-        onClick={() => scrollPrev()}
-      >
-        <MdKeyboardArrowLeft />
-      </span>
-      <span
-        className="absolute z-30 top-1/2 right-0 -mt-10 text-5xl cursor-pointer hover:opacity-90"
-        onClick={() => scrollNext()}
-      >
-        <MdKeyboardArrowRight />
-      </span>
+      {useMemo(
+        () => (
+          <ul className="w-full flex">
+            {topMovies.results.map((mov) => (
+              <li
+                className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/6  "
+                key={mov.id}
+              >
+                <PosterSlider movie={mov} />
+              </li>
+            ))}
+          </ul>
+        ),
+        [topMovies.results]
+      )}
+      {useMemo(
+        () => (
+          <>
+            <span
+              className="absolute z-30 top-1/2 -mt-10 text-5xl cursor-pointer hover:opacity-90"
+              onClick={() => scrollPrev()}
+            >
+              <MdKeyboardArrowLeft />
+            </span>
+            <span
+              className="absolute z-30 top-1/2 right-0 -mt-10 text-5xl cursor-pointer hover:opacity-90"
+              onClick={() => scrollNext()}
+            >
+              <MdKeyboardArrowRight />
+            </span>
+          </>
+        ),
+        [scrollPrev, scrollNext]
+      )}
     </div>
   );
 }

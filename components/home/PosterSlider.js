@@ -1,7 +1,7 @@
 import { isEqual } from "lodash";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { memo } from "react";
+import { memo, useMemo } from "react";
 const IoMdStar = dynamic(() =>
   import("react-icons/io").then((m) => m.IoMdStar)
 );
