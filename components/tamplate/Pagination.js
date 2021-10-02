@@ -2,7 +2,7 @@ import { useEmblaCarousel } from "embla-carousel/react";
 import { isEqual } from "lodash";
 import { useRouter } from "next/dist/client/router";
 import dynamic from "next/dynamic";
-import { memo, useCallback, useEffect, useMemo, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 
 const MdKeyboardArrowLeft = dynamic(() =>
   import("react-icons/md").then((m) => m.MdKeyboardArrowLeft)
@@ -18,7 +18,7 @@ function Pagination({ totalPage }) {
 
   // ====     ====     ====     ====     ====     functions
 
-  const pages = useMemo(
+  const pages = useCallback(
     () => (start, stop, step) =>
       Array.from(
         { length: (stop - start) / step + 1 },
