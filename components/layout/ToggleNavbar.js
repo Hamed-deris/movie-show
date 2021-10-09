@@ -22,20 +22,37 @@ const ToggleNavbar = () => {
           menu ? "animate-menu " : "animate-menu-none"
         }`}
       >
-        <ul className="py-2 ">
+        <ul className="p-2 ">
           <Link href="/">
-            <li className="btn block text-left btn-ghost btn-sm rounded-btn">
+            <li
+              onClick={() => setMenu(!menu)}
+              className="btn block text-left btn-ghost btn-sm rounded-md"
+            >
               Home
             </li>
           </Link>
+          <Link href="/discover">
+            <li
+              onClick={() => setMenu(!menu)}
+              className="btn block text-left btn-ghost btn-sm rounded-md"
+            >
+              Discover
+            </li>
+          </Link>
           <Link href="/about">
-            <li className="btn block text-left btn-ghost btn-sm rounded-btn">
+            <li
+              onClick={() => setMenu(!menu)}
+              className="btn block text-left btn-ghost btn-sm rounded-md"
+            >
               About
             </li>
           </Link>
           <Link href="/contact">
-            <li className="btn block text-left btn-ghost btn-sm rounded-btn">
-              Contact
+            <li
+              onClick={() => setMenu(!menu)}
+              className="btn block text-left btn-ghost btn-sm rounded-md"
+            >
+              Contact US
             </li>
           </Link>
         </ul>

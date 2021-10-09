@@ -44,7 +44,7 @@ function Pagination({ totalPage }) {
 
   const handleParam = (p) => {
     router.push({
-      pathname: "/filter",
+      pathname: router.pathname,
       query: { ...router.query, page: p },
     });
   };
@@ -87,7 +87,7 @@ function Pagination({ totalPage }) {
   }, [router.query.page]);
   // ====     ====     ====     ====     ====     config
   return (
-    <div className="mt-10 flex justify-between">
+    <div className="container mx-auto px-2 md:px-auto my-4 flex justify-between">
       <button
         name="prevPage"
         onClick={handlePrev}

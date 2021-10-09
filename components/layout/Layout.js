@@ -5,8 +5,10 @@ const Navbar = dynamic(() => import("./Navbar"));
 
 export default function Layout({ children }) {
   return (
-    <div className="min-h-screen flex flex-col overflow-hidden">
-      <Navbar />
+    <div className="flex flex-col min-h-screen">
+      <div className="sticky top-0 z-50">
+        <Navbar />
+      </div>
       {children}
       <Footer />
     </div>

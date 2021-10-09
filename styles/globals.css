@@ -1,4 +1,8 @@
 /* global */
+html {
+  scroll-behavior: smooth;
+}
+
 li {
   @apply text-base-content;
   /* py-2 px-4 cursor-pointer hover:bg-base-200 rounded-md; */
@@ -9,12 +13,12 @@ button {
 }
 /* width */
 ::-webkit-scrollbar {
-  @apply w-2 h-1.5;
+  @apply w-2;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  @apply bg-base-200;
+  @apply bg-transparent;
 }
 
 /* Handle */
@@ -67,7 +71,7 @@ button {
   }
   100% {
     opacity: 1;
-    height: 200px;
+    height: 215px;
   }
 }
 
@@ -78,7 +82,7 @@ button {
   }
   100% {
     opacity: 1;
-    height: 200px;
+    height: 215px;
   }
 }
 .animate-menu-none {
@@ -89,7 +93,7 @@ button {
 @-webkit-keyframes menu-none {
   0% {
     opacity: 1;
-    height: 200px;
+    height: 215px;
   }
   85% {
     opacity: 0;
@@ -103,7 +107,7 @@ button {
 @keyframes menu-none {
   0% {
     opacity: 1;
-    height: 200px;
+    height: 215px;
   }
   85% {
     opacity: 0;
@@ -164,5 +168,53 @@ button {
   100% {
     opacity: 1;
     transform: rotate(0) scale(1);
+  }
+}
+.animate-info-full {
+  animation: animate-h-full 200ms ease 0s 1 normal forwards;
+}
+@keyframes animate-h-full {
+  0% {
+    height: 2.75rem;
+  }
+
+  100% {
+    height: 10rem;
+  }
+}
+.animate-info-full-none {
+  animation: animate-h-full-none 200ms ease 0s 1 normal forwards;
+}
+@keyframes animate-h-full-none {
+  0% {
+    height: 10rem;
+  }
+
+  100% {
+    height: 2.75rem;
+  }
+}
+.animate-download-full {
+  animation: animate-download-full 200ms ease 0s 1 normal forwards;
+}
+@keyframes animate-download-full {
+  0% {
+    height: 0px;
+  }
+
+  100% {
+    height: 10rem;
+  }
+}
+.animate-download-full-none {
+  animation: animate-download-full-none 200ms ease 0s 1 normal forwards;
+}
+@keyframes animate-download-full-none {
+  0% {
+    height: 10rem;
+  }
+
+  100% {
+    height: 0px;
   }
 }

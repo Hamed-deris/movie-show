@@ -2,8 +2,13 @@ import { isEqual } from "lodash";
 import dynamic from "next/dynamic";
 import { memo } from "react";
 
-const GridMovie = dynamic(() => import("../../components/tamplate/GridMovie"));
-const Filter = dynamic(() => import("../../components/home/Filter"));
+const DiscoverMovie = dynamic(() =>
+  import("../../components/template/DiscoverMovie")
+);
+const Pagination = dynamic(() =>
+  import("../../components/template/Pagination")
+);
+const Filter = dynamic(() => import("../../components/template/Filter"));
 const Head = dynamic(() => import("next/head"));
 
 function index({ filterData }) {
@@ -22,7 +27,8 @@ function index({ filterData }) {
       </Head>
       <div>
         <Filter />
-        <GridMovie filterMovieData={filterData} />
+        <DiscoverMovie title={"filtered movie"} movies={filterData} />
+        <Pagination totalPage={filterData.total_pages} />
       </div>
     </>
   );

@@ -105,11 +105,11 @@ export default function Filter({}) {
           </div>
           <ul
             tabIndex="0"
-            className="p-2 shadow max-h-44 overflow-y-auto menu dropdown-content bg-base-100 rounded-box"
+            className="p-2 shadow max-h-44 w-44 overflow-y-auto menu dropdown-content bg-base-100 rounded-box"
           >
             {allCounty.map((c) => (
               <li
-                className="text-sm btn btn-sm btn-ghost text-left"
+                className="text-sm btn btn-sm h-full btn-ghost text-left"
                 key={c.iso_3166_1}
                 onClick={() => handleCountry(c.english_name, c.iso_3166_1)}
               >
@@ -126,12 +126,12 @@ export default function Filter({}) {
           </div>
           <ul
             tabIndex="0"
-            className="p-2 shadow max-h-44 overflow-y-auto menu dropdown-content bg-base-100 rounded-box"
+            className="p-2 shadow max-h-44 w-44 overflow-y-auto menu dropdown-content bg-base-100 rounded-box"
           >
             {genres.map((g) => (
               <li
                 key={g.id}
-                className="btn btn-sm btn-ghost text-left"
+                className="btn btn-sm h-full  btn-ghost text-left"
                 onClick={() => handleGenre(g.id, g.name)}
               >
                 {g.name}

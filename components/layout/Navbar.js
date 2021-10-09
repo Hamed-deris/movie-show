@@ -17,11 +17,14 @@ function Navbar() {
               <Link href="/">
                 <li className="btn  btn-ghost btn-sm rounded-btn">Home</li>
               </Link>
+              <Link href="/discover">
+                <li className="btn  btn-ghost btn-sm rounded-btn">Discover</li>
+              </Link>
               <Link href="/about">
                 <li className="btn btn-ghost btn-sm rounded-btn">About</li>
               </Link>
               <Link href="/contact">
-                <li className="btn btn-ghost btn-sm rounded-btn">Contact</li>
+                <li className="btn btn-ghost btn-sm rounded-btn">Contact US</li>
               </Link>
             </ul>
           </div>

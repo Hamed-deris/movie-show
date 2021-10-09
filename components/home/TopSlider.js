@@ -1,10 +1,10 @@
 import { useEmblaCarousel } from "embla-carousel/react";
+import { isEqual } from "lodash";
+import { useRouter } from "next/dist/client/router";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { memo, useCallback, useEffect, useMemo } from "react";
 import useRecursiveTimeout from "../hooks/useRecursiveTimeout";
-const isEqual = dynamic(() => import("lodash").then((m) => m.isEqual));
-
-const PosterSlider = dynamic(() => import("./PosterSlider"));
 
 const MdKeyboardArrowLeft = dynamic(() =>
   import("react-icons/md").then((m) => m.MdKeyboardArrowLeft)
@@ -15,6 +15,12 @@ const MdKeyboardArrowRight = dynamic(() =>
 );
 
 function TopSlider({ topMovies }) {
+  const router = useRouter();
+
+  const handleMovieInfo = useCallback((movieId) => {
+    router.push({ pathname: "/info", query: { id: movieId } });
+  }, []);
+
   const [viewportRef, embla] = useEmblaCarousel({
     loop: true,
     align: "start",
@@ -45,10 +51,16 @@ function TopSlider({ topMovies }) {
           <ul className="w-full flex">
             {topMovies.results.map((mov) => (
               <li
-                className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/6  "
+                className="relative h-96 flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-1/6  "
                 key={mov.id}
               >
-                <PosterSlider movie={mov} />
+                <Image
+                  onClick={() => handleMovieInfo(mov.id)}
+                  alt={mov.title}
+                  className="object-contain "
+                  layout="fill"
+                  src={"/t/p/w500/" + mov.poster_path}
+                />
               </li>
             ))}
           </ul>
