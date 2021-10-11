@@ -1,6 +1,9 @@
+import dynamic from "next/dynamic";
 import { useEffect } from "react";
-import { HiOutlineColorSwatch } from "react-icons/hi";
 import { themeChange } from "theme-change";
+const HiOutlineColorSwatch = dynamic(() =>
+  import("react-icons/hi").then((m) => m.HiOutlineColorSwatch)
+);
 
 export default function ChangeTheme() {
   useEffect(() => {

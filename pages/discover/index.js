@@ -1,5 +1,7 @@
 import dynamic from "next/dynamic";
 
+const Head = dynamic(() => import("next/head"));
+
 const DiscoverMovie = dynamic(() =>
   import("../../components/template/DiscoverMovie")
 );
@@ -9,10 +11,23 @@ const Pagination = dynamic(() =>
 
 function discover({ discoverMovies }) {
   return (
-    <main>
-      <DiscoverMovie title={"discover movies"} movies={discoverMovies} />
-      <Pagination totalPage={discoverMovies.total_pages} />
-    </main>
+    <>
+      <Head>
+        <title>Movie Show Discover Movies</title>
+        <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=7" />$
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="Discover" content="Discover Movies" />
+        <meta
+          name="description"
+          content="show movies using TMDB Api update every 10 hovers"
+        />
+      </Head>
+      <main>
+        <DiscoverMovie title={"discover movies"} movies={discoverMovies} />
+        <Pagination totalPage={discoverMovies.total_pages} />
+      </main>
+    </>
   );
 }
 

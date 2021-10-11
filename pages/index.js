@@ -18,7 +18,7 @@ function Home({ topMoviesData }) {
         <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=7" />$
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="keywords" content="movie movies film tv " />
+        <meta name="Movie Show" content="movie movies film tv " />
         <meta
           name="description"
           content="show movies using TMDB Api update every 10 hovers"

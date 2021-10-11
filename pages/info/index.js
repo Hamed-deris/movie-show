@@ -1,7 +1,7 @@
-import dynamic from "next/dynamic";
 import Image from "next/image";
 import { IoMdStar } from "react-icons/io";
 const Head = dynamic(() => import("next/head"));
+import dynamic from "next/dynamic";
 
 export default function MovieInfo({ movieInfo }) {
   const handleDataToStr = (dataToStr) => {
@@ -17,7 +17,7 @@ export default function MovieInfo({ movieInfo }) {
         <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=7" />$
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="keywords" content="movie movies film tv " />
+        <meta name="info" content="movie movies film tv info " />
         <meta
           name="description"
           content="show movies using TMDB Api update every 10 hovers"

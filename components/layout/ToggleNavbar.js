@@ -2,6 +2,7 @@ import { isEqual } from "lodash";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { memo, useState } from "react";
+
 const MdClear = dynamic(() => import("react-icons/md").then((m) => m.MdClear));
 const MdMenu = dynamic(() => import("react-icons/md").then((m) => m.MdMenu));
 const Search = dynamic(() => import("../helper/Search"));
@@ -31,7 +32,7 @@ const ToggleNavbar = () => {
               Home
             </li>
           </Link>
-          <Link href="/discover">
+          <Link href="/discover?page=1">
             <li
               onClick={() => setMenu(!menu)}
               className="btn block text-left btn-ghost btn-sm rounded-md"

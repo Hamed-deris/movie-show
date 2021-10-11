@@ -1,6 +1,11 @@
 import { useRouter } from "next/dist/client/router";
+import dynamic from "next/dynamic";
 import { useCallback, useRef } from "react";
-import { MdClear, MdSearch } from "react-icons/md";
+
+const MdClear = dynamic(() => import("react-icons/md").then((m) => m.MdClear));
+const MdSearch = dynamic(() =>
+  import("react-icons/md").then((m) => m.MdSearch)
+);
 
 export default function Search() {
   const searchIn = useRef();
