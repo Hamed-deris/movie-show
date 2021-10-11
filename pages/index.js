@@ -1,5 +1,6 @@
 import { isEqual } from "lodash";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { memo } from "react";
 const Head = dynamic(() => import("next/head"));
 
@@ -34,6 +35,11 @@ function Home({ topMoviesData }) {
             title={"weekly movie trending"}
             movies={topMoviesData}
           />
+          <div className="flex justify-center mb-4">
+            <Link href="/discover?page=1">
+              <button className="btn mx-auto">see more</button>
+            </Link>
+          </div>
         </main>
       </div>
     </>
