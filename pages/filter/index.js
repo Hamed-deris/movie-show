@@ -15,7 +15,7 @@ function index({ filterData }) {
   return (
     <>
       <Head>
-        <title>Movie Show Filter</title>
+        <title>H.D Movie Show Filter</title>
         <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=7" />$
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

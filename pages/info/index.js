@@ -13,7 +13,7 @@ export default function MovieInfo({ movieInfo }) {
   return (
     <>
       <Head>
-        <title>Movie Show info</title>
+        <title>H.D Movie Show info</title>
         <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=7" />$
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

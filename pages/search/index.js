@@ -15,7 +15,7 @@ function SearchPage({ searchedMovie }) {
     return (
       <>
         <Head>
-          <title>Movie Show Search</title>
+          <title>H.D Movie Show Search</title>
           <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=7" />$
           <meta
@@ -44,7 +44,7 @@ function SearchPage({ searchedMovie }) {
   return (
     <>
       <Head>
-        <title>Movie Show Search</title>
+        <title>H.D Movie Show Search</title>
         <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=7" />$
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

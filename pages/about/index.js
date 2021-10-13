@@ -6,7 +6,7 @@ function index() {
   return (
     <>
       <Head>
-        <title>Movie Show About Us</title>
+        <title>H.D Movie Show About Us</title>
         <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=7" />$
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,7 +18,7 @@ function index() {
       </Head>
       <div className=" container mx-auto p-6">
         <h1 className="text-6xl font-black text-center tracking-wide capitalize border py-10 rounded-box mb-8">
-          movie show
+          H.D movie show
         </h1>
         <div className="">
           <h1 className="mb-5 text-5xl font-bold">Hello Dear</h1>
