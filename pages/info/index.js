@@ -1,7 +1,7 @@
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { IoMdStar } from "react-icons/io";
 const Head = dynamic(() => import("next/head"));
-import dynamic from "next/dynamic";
 
 export default function MovieInfo({ movieInfo }) {
   const handleDataToStr = (dataToStr) => {
@@ -53,23 +53,23 @@ export default function MovieInfo({ movieInfo }) {
                 {movieInfo.original_title}
               </p>
               <p>
-                <span className="font-semibold">language : </span>
+                <span className="font-semibold">Language : </span>
                 {handleDataToStr(movieInfo.spoken_languages)}
               </p>
               <p>
-                <span className="font-semibold">genres : </span>
+                <span className="font-semibold">Genres : </span>
                 {handleDataToStr(movieInfo.genres)}
               </p>
               <p>
-                <span className="font-semibold">popularity : </span>
+                <span className="font-semibold">Popularity : </span>
                 {movieInfo.popularity}
               </p>
               <p>
-                <span className="font-semibold">status : </span>
+                <span className="font-semibold">Status : </span>
                 {movieInfo.status}
               </p>
               <p>
-                <span className="font-semibold">budget : </span>
+                <span className="font-semibold">Budget : </span>
                 {movieInfo.budget} $
               </p>
               <p>

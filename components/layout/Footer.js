@@ -84,11 +84,11 @@ function Footer() {
             <span>H.D Movie Show</span>
           </h1>
         </Link>
-        <p className="m-auto">
+        <p className="m-auto text-center">
           Copyright © 2021 - All right reserved by{" "}
           <span className="text-info">H.Design</span>
         </p>
-        <ul className="flex gap-5 lg:gap-0 lg:ml-auto">
+        <ul className="flex lg:ml-auto">
           <li className="btn btn-ghost btn-sm">
             <Link href="/">Home</Link>
           </li>
